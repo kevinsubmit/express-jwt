@@ -5,6 +5,7 @@ const app = express();
 const mongoose = require('mongoose');
 const usersRouter = require('./controllers/auth');
 const profilesRouter = require('./controllers/profiles');
+const cors = require('cors');
 
 mongoose.connect(process.env.MONGODB_URI);
 
@@ -15,6 +16,7 @@ mongoose.connection.on('connected', () => {
 app.use(express.json());
 app.use('/auth', usersRouter);
 app.use('/profiles', profilesRouter);
+app.use(cors());
 
 app.get('/',(req,res) => {
     res.json({"mes":"hello"})
