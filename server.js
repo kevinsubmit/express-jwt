@@ -14,9 +14,12 @@ mongoose.connection.on('connected', () => {
 });
 
 app.use(express.json());
+app.use(cors());
+
+
 app.use('/auth', usersRouter);
 app.use('/profiles', profilesRouter);
-app.use(cors());
+
 
 app.get('/',(req,res) => {
     res.json({"mes":"hello"})
