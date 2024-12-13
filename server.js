@@ -16,7 +16,10 @@ app.use(express.json());
 app.use('/auth', usersRouter);
 app.use('/profiles', profilesRouter);
 
+
+// 使用 Heroku 提供的端口，如果没有则使用默认端口 5000
+const port = process.env.PORT || 5000;
 // Routes go here
-app.listen(process.env.PORT, () => {
+app.listen(port, () => {
   console.log('The express app is ready!');
 });
